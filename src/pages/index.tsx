@@ -21,7 +21,7 @@ const MainPage = () => {
       const response = await fetch("/api/create", {
         method: "POST",
         body: JSON.stringify({
-          url: link,
+          url: link.includes("http") ? link : `https://${link}`,
         }),
       });
 
