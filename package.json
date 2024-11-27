@@ -7,15 +7,21 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:all": "tsx build.ts && cd server && yarn && yarn build",
+    "build:server": "cd server && yarn && yarn build",
+    "start": "cd server && node .output/server/index.mjs"
   },
   "dependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.10.0",
     "autoprefixer": "^10.4.20",
+    "fs-extra": "^11.2.0",
     "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.15",
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

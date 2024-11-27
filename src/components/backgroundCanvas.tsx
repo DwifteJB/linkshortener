@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 
 
 interface Dot {
@@ -10,7 +10,7 @@ interface Dot {
 
 // background canvas will have the amount of links created to be the dots, will pregenerate 200 using code for random websites... (as dots) velocity will be how many times its been clicked!
 
-const BackgroundCanvas = () => {
+const BackgroundCanvas = ({children}: PropsWithChildren<object>) => {
     const canvasRef = useRef<HTMLCanvasElement>(null!);
     const [dimensions, setDimensions] = useState({ width: 1000, height: 1000 });
     const animationFrameRef = useRef<number>();
@@ -97,7 +97,12 @@ const BackgroundCanvas = () => {
                 id="background-canvas" 
                 width={dimensions.width} 
                 height={dimensions.height}
+                className="w-full h-full absolute top-0 left-0 "
             />
+            <div className="relative z-10">
+                {children}
+            </div>
+
         </div>
     )
 }
