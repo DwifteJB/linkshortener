@@ -5,12 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:client": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:all": "tsx build.ts && cd server && yarn && yarn build && yarn prisma generate",
-    "build:server": "cd server && yarn && yarn build",
-    "start": "cd server && npx prisma generate && node .output/server/index.mjs"
+    "build:all": "tsx build.ts && cd server && yarn build",
+    "start": "cd server && node .output/server/index.mjs"
   },
   "dependencies": {
     "@types/fs-extra": "^11.0.4",

@@ -5,6 +5,8 @@ import { dirname } from 'path';
 import { build } from 'vite';
 import { resolve } from 'path';
 import { copy } from 'fs-extra';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,6 +23,12 @@ async function main() {
     },
   });
   await copy(dist, serverPublic);
+
+    const execAsync = promisify(exec);
+
+    const std = await execAsync('npx prisma generate', { cwd: resolve(__dirname, 'server') });
+
+    console.log('done', std);
 }
 
 main();
